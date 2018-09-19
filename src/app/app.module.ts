@@ -2,13 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { CarComponent } from './car/car.component';
 import { HttpModule } from '@angular/http';
+import { SearchCarComponent } from './search-car/search-car.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CarComponent
+    SearchCarComponent
   ],
   imports: [
     BrowserModule,

@@ -8,13 +8,14 @@ import {map} from 'rxjs/operators';
 })
 export class CarService {
 
-  url = 'https://databases.one/api/?format=json&select=make&api_key=Your_Database_Api_Key'; 
+  url = 'http://www.omdbapi.com/?apikey=b2380994&s='; 
 
   constructor(private http: Http) { }
 
-  getCars(): Observable<any>{
+  getCars(serString :string): Observable<any>{
 
-    return this.http.get(this.url).pipe(map((res:Response) => res.json()));
+    console.log(this.url + serString);
+    return this.http.get(this.url + serString).pipe(map((res:Response) => res.json()));
   }
 
 }
