@@ -36,9 +36,21 @@ export class SearchCarComponent implements OnInit {
         //When search is done
         this.searchOnGoing = false;
         this.searchDone = true;
+        this.orderByYear();
       },
       err => console.log(`Something went wrong: ${err}`)
+      
     )
   }
 
+  orderByYear(){
+    this.array2.sort((left,right): number =>{
+      if(left.Year < right.Year){
+        return -1;
+      }if(left.Year > right.Year){
+        return 1;
+      }
+      return 0;
+    })
+  }
 }

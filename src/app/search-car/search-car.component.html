@@ -1,37 +1,30 @@
-
-
 <br>
-<div style="text-align:center;padding-left:0%  ">
-    <div>
-  <p>Marca: <input #busca type = 'text' (keyUp.enter) = "searchCar(busca.value)"></p>
+<div style="text-align:center">
+<p>Titulo:</p>
 </div>
+<div style="text-align:center;padding-left:34%">
+    <input  class="form-control" #busca type = 'text' (keyUp.enter) = "searchCar(busca.value)" style="width: 50%;">
 </div>
 <br>
 
 <div style="text-align:center">
-    <div>
-    <h1>Cars</h1>
-    </div>
-    </div>  
-    
-    
-     <div style="text-align:center;padding-left:43%  ">
-        <!--div-->
-    <table style="align:left">
-      <thead> 
-        <td> Filme </td>
-        <td> Ano </td>
-        <br>
-      </thead>
-      <tbody>
-        <tr *ngFor="let movie of array2">
-          <td>
-           {{movie.Year}}
-         </td>
-         <td>{{movie.Title}}</td>
+  <div>
+    <h1>Movies</h1>
+  </div>
+</div>  
+
+  <table class="table table-hover" style="table-layout: fixed">
+      <thead>
+        <tr>
+          <th scope="col">Filme</th>
+          <th scope="col">Ano</th>
         </tr>
-    </tbody>
+      </thead>
+      <tbody *ngFor="let movie of array2">
+        <tr>
+          <td>{{movie.Title}}</td>
+          <td>{{movie.Year}}</td>
+        </tr>
+      </tbody>
     </table>
-    <!--/div-->
-    </div>  
       
