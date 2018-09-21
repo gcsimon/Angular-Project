@@ -1,13 +1,11 @@
-<div style="text-align:center">
-  
+<div>
     <div class="navBar">
         <ul>
+            <li style="display: inline"><a routerLink="/home"><b>{{title}}</b></a></li>
             <li style="display: inline"><a routerLink="/home">Home</a></li>
             <li style="display: inline"><a routerLink="/search">Search</a></li>
         </ul>
     </div>
-     <h1>
-    {{ title }}
-  </h1>
 </div>
+<br>
 <router-outlet></router-outlet>

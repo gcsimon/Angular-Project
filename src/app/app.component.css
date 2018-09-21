@@ -12,7 +12,6 @@
     font-size: 17px;
 }
 
-.navBar a:hover {
-    background-color: rgb(4, 112, 235);
-    color: black;
-}
+body {
+    background-color: #df1b1b;
+ }
