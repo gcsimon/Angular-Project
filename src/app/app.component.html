@@ -1,6 +1,13 @@
 <div style="text-align:center">
-  <h1>
+  
+    <div class="navBar">
+        <ul>
+            <li style="display: inline"><a routerLink="/home">Home</a></li>
+            <li style="display: inline"><a routerLink="/search">Search</a></li>
+        </ul>
+    </div>
+     <h1>
     {{ title }}
   </h1>
 </div>
-<app-search-car></app-search-car>
+<router-outlet></router-outlet>

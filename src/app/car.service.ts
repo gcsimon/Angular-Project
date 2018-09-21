@@ -19,8 +19,8 @@ export class CarService {
     return this.http.get(this.url + serString + '&page=' + this.pageIndex).pipe(map((res:Response) => res.json()));
   }
 
-  incrementIndex(){
-    if (this.pageIndex<100)
+  incrementIndex(numresults){
+    if (this.pageIndex<numresults)
       this.pageIndex = this.pageIndex + 1;
   }
   decrementIndex(){    

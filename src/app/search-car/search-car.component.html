@@ -9,31 +9,35 @@
   </div>
 </div>  
 
-<table *ngIf="showPageNav()">
-  <tr>
-    <td>
-        <button  #previous (click) = "prevPage()" *ngIf="showPrevButton()">Prev Page</button>
-    </td>
-    <td>
-        {{service.pageIndex}}/{{numResults}}
-    </td>
-    <td>
-        <button  #next (click) = "nextPage()" *ngIf="showNextButton()">Next Page</button>
-    </td>
-  </tr>
-</table>
-
 <table class="table table-hover" style="table-layout: fixed">
-      <thead>
+    <thead *ngIf="showPageNav()">
+        <td style="padding-left:28%">
+            <button class="btn btn-primary" #previous (click) = "prevPage()" *ngIf="showPrevButton()">Prev Page</button>
+        </td>
+        <td style="padding-left:16%"> 
+            {{service.pageIndex}}/{{numResults}}
+        </td>
+        <td  style="padding-left:1.5%">
+            <button class="btn btn-primary" #next (click) = "nextPage()" *ngIf="showNextButton()">Next Page</button>
+        </td>
+    </thead>  
+  
+    <thead>
         <tr>
           <th scope="col">Filme</th>
-          <th scope="col">Ano</th>
+          <th scope="col" style="padding-left:16%">Ano</th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody *ngFor="let movie of array2">
         <tr>
           <td>{{movie.Title}}</td>
-          <td>{{movie.Year}}</td>
+          <td style="padding-left:0.5%; text-align: center">
+            {{movie.Year}}
+          </td>
+          <td style="padding-left:26%">
+              <button class="btn btn-outline-info" >More Info</button>
+            </td>
         </tr>
       </tbody>
     </table>

@@ -20,6 +20,7 @@ export class SearchCarComponent implements OnInit {
   resultsArray = [];
   array2 = [];
   numResults;
+  searchStatus: boolean = false;
 
   searchCar(v) {
     this.searchOnGoing = true;
@@ -34,6 +35,7 @@ export class SearchCarComponent implements OnInit {
         this.searchOnGoing = false;
         this.searchDone = true;
         this.orderByYear();
+        this.searchStatus = res.Response;
       },
       err => console.log(`Something went wrong: ${err}`)
       
@@ -47,12 +49,12 @@ export class SearchCarComponent implements OnInit {
     return ((this.service.pageIndex) > 1);
   }
   showPageNav():boolean{
-    return this.searchOnGoing || this.searchDone;
+    return (this.searchOnGoing || this.searchDone ) && (this.searchStatus);
   }
-  
+
   nextPage(){
     if((this.service.pageIndex + 1) <= this.numResults){
-      this.service.incrementIndex();
+      this.service.incrementIndex(this.numResults);
       this.searchCar(this.search);
     }
   }
