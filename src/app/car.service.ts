@@ -8,14 +8,26 @@ import {map} from 'rxjs/operators';
 })
 export class CarService {
 
-  url = 'http://www.omdbapi.com/?apikey=b2380994&s='; 
+  url = 'http://www.omdbapi.com/?apikey=b2380994&s=';
+  pageIndex=1;
 
   constructor(private http: Http) { }
 
   getCars(serString :string): Observable<any>{
 
     console.log(this.url + serString);
-    return this.http.get(this.url + serString).pipe(map((res:Response) => res.json()));
+    return this.http.get(this.url + serString + '&page=' + this.pageIndex).pipe(map((res:Response) => res.json()));
   }
 
+  incrementIndex(){
+    if (this.pageIndex<100)
+      this.pageIndex = this.pageIndex + 1;
+  }
+  decrementIndex(){    
+    if (this.pageIndex>1)
+      this.pageIndex = this.pageIndex - 1;
+  }
+  resetIndex(){
+    this.pageIndex=1;
+  }
 }

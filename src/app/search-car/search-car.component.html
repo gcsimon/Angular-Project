@@ -1,9 +1,5 @@
-<br>
-<div style="text-align:center">
-<p>Titulo:</p>
-</div>
 <div style="text-align:center;padding-left:34%">
-    <input  class="form-control" #busca type = 'text' (keyUp.enter) = "searchCar(busca.value)" style="width: 50%;">
+    <input  class="form-control" #busca type = 'text' (keyDown.enter) = "service.resetIndex()" (keyUp.enter) = "searchCar(busca.value)" style="width: 50%;" placeholder="Informe um titulo">
 </div>
 <br>
 
@@ -13,7 +9,21 @@
   </div>
 </div>  
 
-  <table class="table table-hover" style="table-layout: fixed">
+<table *ngIf="showPageNav()">
+  <tr>
+    <td>
+        <button  #previous (click) = "prevPage()" *ngIf="showPrevButton()">Prev Page</button>
+    </td>
+    <td>
+        {{service.pageIndex}}/{{numResults}}
+    </td>
+    <td>
+        <button  #next (click) = "nextPage()" *ngIf="showNextButton()">Next Page</button>
+    </td>
+  </tr>
+</table>
+
+<table class="table table-hover" style="table-layout: fixed">
       <thead>
         <tr>
           <th scope="col">Filme</th>
@@ -27,4 +37,3 @@
         </tr>
       </tbody>
     </table>
-      

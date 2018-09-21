@@ -14,26 +14,23 @@ export class SearchCarComponent implements OnInit {
     this.search = "";
   }
 
-
   search: string;
-  inputIsValid: boolean = false;
   searchOnGoing: boolean = false;
   searchDone: boolean = false;
   resultsArray = [];
   array2 = [];
+  numResults;
 
   searchCar(v) {
     this.searchOnGoing = true;
     this.searchDone = false;
     this.search = v;
     
-    //Call Service here
     this.service.getCars(this.search).subscribe( 
       res => { console.warn(res);
         let results;
-        this.array2 = res.Search;          
-        //this.resultsArray.push({'Title' : results.Title, 'Year' : results.Year});
-        //When search is done
+        this.array2 = res.Search;
+        this.numResults=Math.ceil((res.totalResults)/10);       
         this.searchOnGoing = false;
         this.searchDone = true;
         this.orderByYear();
@@ -41,6 +38,28 @@ export class SearchCarComponent implements OnInit {
       err => console.log(`Something went wrong: ${err}`)
       
     )
+  }
+
+  showNextButton():boolean{
+    return ((this.service.pageIndex + 1) <= this.numResults);
+  }
+  showPrevButton():boolean{
+    return ((this.service.pageIndex) > 1);
+  }
+  showPageNav():boolean{
+    return this.searchOnGoing || this.searchDone;
+  }
+  
+  nextPage(){
+    if((this.service.pageIndex + 1) <= this.numResults){
+      this.service.incrementIndex();
+      this.searchCar(this.search);
+    }
+  }
+
+  prevPage(){
+      this.service.decrementIndex();
+      this.searchCar(this.search);
   }
 
   orderByYear(){
