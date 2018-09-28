@@ -13,32 +13,39 @@
 <table class="table table-hover" style="table-layout: fixed">
     <thead *ngIf="showPageNav()">
         <td style="padding-left:28%">
-            <button class="btn btn-primary" #previous (click) = "prevPage()" *ngIf="showPrevButton()">Prev Page</button>
+                <button style="margin-right:9.5%" class="btn btn-primary" #first (click) = "service.pageIndex = 1 ; searchCar(busca.value)" *ngIf="showPrevButton()"> << </button>
+                <button class="btn btn-primary" #previous (click) = "prevPage()" *ngIf="showPrevButton()"> < </button>
         </td>
-        <td style="padding-left:16%"> 
-            {{service.pageIndex}}/{{numResults}}
+        <td style="padding-left:14.6%"> 
+            <input class="form-control" #pagina type = 'text' (keyDown.enter) = "inputIndex(pagina.value)" value={{service.pageIndex}} style="width: 16% ; display:inline-block ; font-weight: bolder;">
+            <div style="display:inline-block ; margin-left:1.5% ; font-weight: bolder;"> /{{numResults}}</div>
         </td>
         <td  style="padding-left:1.5%">
-            <button class="btn btn-primary" #next (click) = "nextPage()" *ngIf="showNextButton()">Next Page</button>
+            <button  class="btn btn-primary" #next (click) = "nextPage()" *ngIf="showNextButton()"> > </button>
+            <button style="margin-left:1.5%" class="btn btn-primary" #last (click) = "service.pageIndex = numResults ; searchCar(busca.value)" *ngIf="showNextButton()"> >> </button>
         </td>
     </thead>  
-  
-    <thead>
-        <tr>
-          <th scope="col">Filme</th>
-          <th scope="col" style="padding-left:16%">Ano</th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody *ngFor="let movie of array2">
-        <tr>
-          <td>{{movie.Title}}</td>
-          <td style="padding-left:0.5%; text-align: center">
-            {{movie.Year}}
-          </td>
-          <td style="padding-left:26%">
-              <button class="btn btn-outline-info" >More Info</button>
-            </td>
-        </tr>
-      </tbody>
-    </table>
+</table>
+
+<div *ngIf="searchDone">
+    <mat-expansion-panel *ngFor="let movie of moreInfo">
+        <mat-expansion-panel-header >
+            <mat-panel-title>
+                {{movie.Title}} - {{movie.Year}}
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <table>
+            <tr>
+                <td>
+                    <p><img src="{{movie.Poster}}" alt="Image not found" style="width: 150px"></p>
+                </td>
+                <td style="padding-left: 3%">
+                    <p style="text-transform: capitalize">{{movie.Type}}</p>
+                    <p>Released: {{movie.Released}}</p>
+                    <p>Director: {{movie.Director}}</p>
+                    <p>Plot: {{movie.Plot}}</p>
+                </td>
+            </tr>
+        </table>
+    </mat-expansion-panel>
+</div>

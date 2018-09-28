@@ -1,14 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~font-awesome/css/font-awesome.min.css";
 
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 
 * {
     font-family: 'Ubuntu';
   }
 
 
-  body {
-    background-image: url("https://img00.deviantart.net/b68e/i/2011/099/a/d/texture_153_by_sirius_sdz-d2lwzka.jpg");
- }
+

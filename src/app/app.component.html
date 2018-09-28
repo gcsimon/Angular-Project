@@ -1,4 +1,4 @@
-<div>
+<!-- <div>
     <div class="navBar">
         <ul>
             <li style="display: inline"><a routerLink="/home"><b>{{title}}</b></a></li>
@@ -7,5 +7,23 @@
         </ul>
     </div>
 </div>
-<br>
-<router-outlet></router-outlet>
+<br> -->
+
+<mat-drawer-container style="height: -webkit-fill-available ; background-image: linear-gradient(to right, rgb(24, 201, 255), rgb(114, 217, 248), rgb(156, 245, 252));" class="menu-container" autosize>
+        
+        <mat-drawer #menu style="padding: 40px" mode="over">
+                <div class="list-group">
+                    <a class="list-group-item" routerLink="/home">Home</a>
+                    <a class="list-group-item" routerLink="/search">Search</a>
+                </div>
+        </mat-drawer>
+      
+        <div style="display:inline-block">
+          <button class="btn btn-primary" type="button" (click)="menu.toggle()">
+            Menu
+          </button>
+        </div>
+
+        <router-outlet></router-outlet>
+
+</mat-drawer-container>

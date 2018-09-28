@@ -1,0 +1,14 @@
+ .mat-expansion-panel-header-title {
+      color: rgba(0, 0, 0, 0.815) ;
+      font-size: 150%;
+      font-weight: bolder;
+  }
+  .mat-expansion-panel-header:not([aria-disabled=true]) {
+    background-color: rgb(204, 242, 255);
+}
+.mat-expansion-panel-header{
+  background: rgb(204, 242, 255)
+}
+  .mat-expansion-panel {
+    background: rgb(204, 242, 255)
+  }
